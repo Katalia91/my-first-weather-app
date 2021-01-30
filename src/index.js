@@ -36,6 +36,14 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let city = response.data.name;
+  let description = document.querySelector("#description");
+  description.innerHTML = response.data.weather[0].description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", `${response.data.weather[0].description}`);
   let windUnit = " m/s";
   let humidityUnit = " %";
   let pressureUnit = " hPa";
