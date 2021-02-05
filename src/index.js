@@ -31,13 +31,14 @@ let date = document.querySelector("#current-date");
 date.innerHTML = formattedDate;
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = response.data.main.temp;
+  document.querySelector("#degrees").innerHTML = Math.round(temperature);
   let pressure = response.data.main.pressure;
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let city = response.data.name;
-  let description = document.querySelector("#description");
-  description.innerHTML = response.data.weather[0].description;
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -47,16 +48,15 @@ function showTemperature(response) {
   let windUnit = " m/s";
   let humidityUnit = " %";
   let pressureUnit = " hPa";
-  let heading = document.querySelector("#current-city");
-  heading.innerHTML = city;
-  let windSpeed = document.querySelector("#wind-value");
-  windSpeed.innerHTML = `${wind}${windUnit}`;
-  let humidityValue = document.querySelector("#humidity-value");
-  humidityValue.innerHTML = `${humidity}${humidityUnit}`;
-  let airPressure = document.querySelector("#pressure-value");
-  airPressure.innerHTML = `${pressure}${pressureUnit}`;
-  let currentTemp = document.querySelector("#degrees");
-  currentTemp.innerHTML = temperature;
+  document.querySelector("#current-city").innerHTML = city;
+  document.querySelector("#wind-value").innerHTML = `${wind}${windUnit}`;
+  document.querySelector(
+    "#humidity-value"
+  ).innerHTML = `${humidity}${humidityUnit}`;
+  document.querySelector(
+    "#pressure-value"
+  ).innerHTML = `${pressure}${pressureUnit}`;
+  celsiusTemp = response.data.main.temp; // can I use the variable temperature instead of response.data.main.temp?
 }
 function searchOnLoad(city) {
   let apiKey = "5c3ee28f0359086dde5610bde74e2870";
@@ -89,14 +89,28 @@ function getCurrentLocation(event) {
 let locationButton = document.querySelector("#current-location-btn");
 locationButton.addEventListener("click", getCurrentLocation);
 
-// Coming next
-
-/* function convertToFahrenheit(event) {
+function convertToFahrenheit(event) {
   event.preventDefault();
   let temp = document.querySelector("#degrees");
-  let tempF = "temp" * 1.8 + 32;
-  console.log(tempF);
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let tempF = celsiusTemp * 1.8 + 32;
+  temp.innerHTML = Math.round(tempF);
 }
 
-*/
+let celsiusTemp = null;
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#degrees");
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  temp.innerHTML = Math.round(celsiusTemp);
+}
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", convertToFahrenheit);
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", convertToCelsius);
+
 searchOnLoad("Oslo");

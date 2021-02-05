@@ -4,6 +4,7 @@ a {
 }
 a:hover {
   color: #f3af94;
+  text-decoration: none;
 }
 strong {
   color: #ff9d72;
@@ -104,3 +105,14 @@ ul {
   position: relative;
   top: 7px;
 }*/
+
+.weather-conditions .active {
+  color: #ffffff;
+  cursor: default;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.weather-conditions .active:hover {
+  text-decoration: none;
+}
