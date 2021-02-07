@@ -6,43 +6,39 @@ a:hover {
   color: #f3af94;
   text-decoration: none;
 }
-strong {
-  color: #ff9d72;
-  font-size: 2em;
-}
-
-.forecast-temperature strong {
-  color: #ffffff;
-  font-size: 1em;
-}
-
 footer {
   text-align: center;
   font-size: 0.9em;
   color: rgba(244, 244, 244, 0.5);
   margin: 3em 12em 0em 12em;
 }
-ul {
-  margin: 0 0 10px;
-  padding: 0;
-}
 h1 {
   margin-top: 30px;
   color: #ff9d72;
   margin-bottom: 0;
 }
-#forecast h4 {
-  text-align: center;
-  margin-bottom: -0.5rem;
+img {
+  margin: -6px -11px;
+}
+strong {
+  color: #ff9d72;
+  font-size: 2em;
+}
+ul {
+  padding: 0;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+.btn-light {
+  background: #ca8186;
+  border: none;
 }
 .conditions,
 .daily-conditions {
   list-style: none;
   line-height: 1;
 }
-ul {
-  margin-bottom: 30px;
-}
+
 .consecutive-days {
   font-size: 1.5em;
   margin: 3.5em 2em 1.5em 2em;
@@ -50,6 +46,31 @@ ul {
 }
 .footer {
   color: blue;
+}
+.forecast-temperature strong {
+  color: #ffffff;
+  font-size: 1em;
+}
+.row-cols-5 {
+  margin: 0 auto;
+  text-align: center;
+  margin: 1.5em 2em 1.5em 2em;
+}
+.search-form {
+  width: 120%;
+}
+
+.temperature {
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+  float: left;
+  margin-top: 0;
+  font-size: 64px;
+}
+.units {
+  position: relative;
+  top: -4px;
 }
 .weather-app {
   color: rgb(244, 244, 244);
@@ -64,39 +85,6 @@ ul {
   border-radius: 15px;
   width: 50%;
 }
-/*.col {
-  line-height: 2em;
-  font-size: 1.1em;
-}*/
-.row-cols-5 {
-  margin: 0 auto;
-  text-align: center;
-  margin: 1.5em 2em 1.5em 2em;
-}
-
-/*.form-control {
-  width: 75%;
-  position: relative;
-  left: -10px;
-  margin: 0;
-}*/
-
-.btn-light {
-  background: #ca8186;
-  border: none;
-}
-.temperature {
-  font-weight: 400;
-  line-height: 1;
-  margin: 0;
-  float: left;
-  margin-top: 0;
-  font-size: 64px;
-}
-.units {
-  position: relative;
-  top: -4px;
-}
 .weather-icon {
   margin: 0 auto;
   padding: 0;
@@ -104,29 +92,24 @@ ul {
   width: 64px;
   height: 64px;
 }
-.search-form {
-  width: 120%;
-}
-
-#description:first-letter {
-  text-transform: capitalize;
-}
-/*.weather-conditions {
-  position: relative;
-  top: 7px;
-}*/
-
 .weather-conditions .active {
   color: #ffffff;
   cursor: default;
   font-size: 20px;
   text-decoration: none;
 }
-
 .weather-conditions .active:hover {
   text-decoration: none;
 }
-
-img {
-  margin: -6px -11px;
+#description {
+  font-size: 22px;
+  margin-top: 33px;
+  margin-bottom: -15px;
+}
+#description:first-letter {
+  text-transform: capitalize;
+}
+#forecast h4 {
+  text-align: center;
+  margin-bottom: -0.5rem;
 }

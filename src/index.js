@@ -1,34 +1,34 @@
-let currentDate = new Date(); //put it inside a function!
-let day = currentDate.getDate(); //date of the month 1-31
-let hour = currentDate.getHours();
-let minutes = currentDate.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
+function formatDate(timestamp) {
+  let currentDate = new Date(timestamp);
+  let day = currentDate.getDate();
+  let hour = currentDate.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = currentDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let weekDay = weekDays[currentDate.getDay()];
+  let time = `${hour}:${minutes}`;
+  let months = [
+    "Jan",
+    "Feb",
+    "March",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[currentDate.getMonth()];
+  return `${weekDay} ${day} ${month}, ${time}`;
 }
-let time = `${hour}:${minutes}`;
-
-let months = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-let month = months[currentDate.getMonth()];
-let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let weekDay = weekDays[currentDate.getDay()]; //Sunday - Saturday
-let formattedDate = `${weekDay} ${day} ${month}, ${time}`;
-
-let date = document.querySelector("#current-date");
-date.innerHTML = formattedDate;
 
 function showTemperature(response) {
   let temperature = response.data.main.temp;
@@ -37,6 +37,7 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let city = response.data.name;
+  let date = document.querySelector("#current-date");
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   let iconElement = document.querySelector("#icon");
@@ -57,23 +58,21 @@ function showTemperature(response) {
     "#pressure-value"
   ).innerHTML = `${pressure}${pressureUnit}`;
   celsiusTemp = response.data.main.temp; // can I use the variable temperature instead of response.data.main.temp?
+  date.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function showForecast(response) {
-  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let forecast = response.data.list[0];
   console.log(forecast);
-  forecastElement.innerHTML = `
-    <div class="col-2">
-      <h4>12:00</h4>
+  forecastElement.innerHTML = `<div class="col-2">
+      <h4>${formatHours(forecast.dt * 1000)}</h4>
       <img src="https://openweathermap.org/img/wn/${
         forecast.weather[0].icon
       }@2x.png"/>
       <div class="forecast-temperature">
-      <strong>${Math.round(forecast.main.temp_max)}℃</strong> ${Math.round(
-    forecast.main.temp_min
-  )}℃</div>
+      <strong>${Math.round(forecast.main.temp_max)}℃</strong>
+       ${Math.round(forecast.main.temp_min)}℃</div>
     </div>`;
 }
 
