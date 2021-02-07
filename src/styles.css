@@ -7,7 +7,7 @@ a:hover {
   text-decoration: none;
 }
 body {
-  background: url("D:/!nie_kasowac!/Pulpit/SheCodes/Git/my-first-weather-app/images/mountains.jpg");
+  background: url(../images/mountains.jpg);
   background-size: cover;
 }
 footer {
