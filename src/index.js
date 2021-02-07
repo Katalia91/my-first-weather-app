@@ -1,17 +1,8 @@
 function formatDate(timestamp) {
   let currentDate = new Date(timestamp);
   let day = currentDate.getDate();
-  let hour = currentDate.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-  let minutes = currentDate.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
   let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let weekDay = weekDays[currentDate.getDay()];
-  let time = `${hour}:${minutes}`;
   let months = [
     "Jan",
     "Feb",
@@ -27,7 +18,20 @@ function formatDate(timestamp) {
     "Dec",
   ];
   let month = months[currentDate.getMonth()];
-  return `${weekDay} ${day} ${month}, ${time}`;
+  return `${weekDay} ${day} ${month}, ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let currentDate = new Date(timestamp);
+  let hour = currentDate.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = currentDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hour}:${minutes}`;
 }
 
 function showTemperature(response) {
@@ -62,9 +66,9 @@ function showTemperature(response) {
 }
 
 function showForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let forecast = response.data.list[0];
-  console.log(forecast);
   forecastElement.innerHTML = `<div class="col-2">
       <h4>${formatHours(forecast.dt * 1000)}</h4>
       <img src="https://openweathermap.org/img/wn/${

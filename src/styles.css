@@ -6,6 +6,10 @@ a:hover {
   color: #f3af94;
   text-decoration: none;
 }
+body {
+  background: url("D:/!nie_kasowac!/Pulpit/SheCodes/Git/my-first-weather-app/images/mountains.jpg");
+  background-size: cover;
+}
 footer {
   text-align: center;
   font-size: 0.9em;
@@ -16,6 +20,9 @@ h1 {
   margin-top: 30px;
   color: #ff9d72;
   margin-bottom: 0;
+}
+h4 {
+  font-size: 20px;
 }
 img {
   margin: -6px -11px;
@@ -30,8 +37,10 @@ ul {
   margin-bottom: 30px;
 }
 .btn-light {
-  background: #ca8186;
+  background: #d38bcd;
   border: none;
+  color: white;
+  font-weight: 600;
 }
 .conditions,
 .daily-conditions {
@@ -41,15 +50,22 @@ ul {
 
 .consecutive-days {
   font-size: 1.5em;
-  margin: 3.5em 2em 1.5em 2em;
+  margin: 3em 2em 1.5em 2em;
   text-align: center;
 }
 .footer {
   color: blue;
 }
+.forecast-temperature {
+  color: #ffffff;
+  font-size: 1.05em;
+}
+
 .forecast-temperature strong {
   color: #ffffff;
-  font-size: 1em;
+  display: inline;
+  font-size: 1.05em;
+  margin: -3px;
 }
 .row-cols-5 {
   margin: 0 auto;
@@ -74,7 +90,7 @@ ul {
 }
 .weather-app {
   color: rgb(244, 244, 244);
-  background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%);
+  background-image: linear-gradient(-183deg, #9e4f98 35%, #264b9d 92%);
   font-family: "Josefin Sans", sans-serif;
   font-size: 1em;
   display: block;
