@@ -7,7 +7,7 @@ a:hover {
   text-decoration: none;
 }
 body {
-  background: url(../images/mountains.jpg);
+  background-image: url("images/mountains.jpg");
   background-size: cover;
 }
 footer {
