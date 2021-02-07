@@ -97,6 +97,9 @@ function searchOnLoad(city) {
 function displayCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search-input").value;
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+
   searchOnLoad(city);
 }
 let form = document.querySelector("#search-window");
@@ -110,6 +113,10 @@ function showPosition(position) {
   let units = "metric";
   let fullUrl = `${apiUrl}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(fullUrl).then(showTemperature);
+  fullUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(fullUrl).then(showForecast);
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
 }
 function getCurrentLocation(event) {
   event.preventDefault();
